@@ -138,6 +138,9 @@
   {% endblock %}
 
   <title>{{ SITENAME }}{% block title %}{% endblock %}</title>
+  {% if SITESUBTITLE %}
+      <p class="subtitle">{{ SITESUBTITLE }}</p>
+  {% endif %}
 
   {% if GOOGLE_ADSENSE and GOOGLE_ADSENSE.page_level_ads %}
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

@@ -1,7 +1,7 @@
 {
-  "name": "flex",
-  "version": "2.3.0",
-  "description": "A minimalist Pelican theme",
+  "name": "flexing",
+  "version": "1.0.0",
+  "description": "A minimalist Pelican theme based on Flex",
   "main": "gulpfile.js",
   "directories": {
     "test": "tests"
