@@ -630,3 +630,7 @@ div.figure.align-right {
     animation: octocat-wave 560ms ease-in-out;
   }
 }
+
+.form-container {
+  margin-left: 0px !important;
+}
