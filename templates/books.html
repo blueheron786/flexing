@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<article>
+
+  <h1>Books</h1>
+
+  <div class="books-grid">
+    {% for article in articles %}
+      {% if article.category == "Books" %}
+      <article class="single book-row">
+        <div class="book-grid">
+          <div class="book-image">
+            <a href="{{ SITEURL }}/{{ article.url }}">
+              <img src="{{ SITEURL }}{{ article.metadata.cover }}" alt="{{ article.title }} cover">
+            </a>
+          </div>
+          <div class="book-info">
+            <h2 class="book-title">
+              <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+            </h2>
+            <p class="book-summary">{{ article.summary }}</p>
+            <p><a href="{{ SITEURL }}/{{ article.url }}" class="read-more">Read more →</a></p>
+          </div>
+        </div>
+      </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+</article>
+{% endblock %}
