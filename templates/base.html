@@ -155,6 +155,7 @@
 
   {% include "partial/gtm.html" %}
   {% include "partial/clarity.html" %}
+  {% include "partial/cloudflare-analytics.html" %}
 </head>
 <body {% if not THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE %}class="{{ THEME_COLOR|default('light') }}-theme"{% endif %}>
   {% include "partial/gtm_noscript.html" %}
@@ -189,5 +190,6 @@
   {% include 'partial/cf_analytics.html' %}
 
   {% block additional_js %}{% endblock %}
+ 
 </body>
 </html>
