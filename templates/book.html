@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <article class="book-page">
+    <header>
+      <h1>{{ article.title }}</h1>
+      <div class="book-cover">
+        <img src="{{ SITEURL }}{{ article.metadata.cover }}" alt="{{ article.title }} Cover">
+      </div>
+    </header>
+    
+    <section class="book-description">
+      <p>{{ article.content }}</p>
+    </section>
+
+    <div class="cta">
+      <a href="{{ article.metadata.buy_link }}" class="buy-button">Buy Now</a>
+    </div>
+  </article>
+{% endblock %}
