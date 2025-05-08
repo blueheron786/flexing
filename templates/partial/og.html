@@ -5,12 +5,36 @@
     {% set default_locale = 'en_US' %}
   {% endif %}
   <meta property="og:site_name" content="{{ SITENAME }}"/>
-  <meta property="og:type" content="blog"/>
-  <meta property="og:title" content="{{ SITENAME }}"/>
-  <meta property="og:description" content="{{ SITEDESCRIPTION }}"/>
-  <meta property="og:locale" content="{{ default_locale }}"/>
-  <meta property="og:url" content="{{ SITEURL }}"/>
-  {% if SITELOGO %}
-  <meta property="og:image" content="{{ SITELOGO }}">
+  <meta property="og:type" content="article"/>
+  <meta property="og:locale" content="{{ default_locale }}" />
+
+  {% if page is defined and page %}
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta property="og:description" content="{{ page.summary|striptags if page.summary else SITEDESCRIPTION }}" />
+    <meta property="og:url" content="{{ SITEURL }}/{{ page.url }}" />
+    {% if page.metadata.image %}
+      <meta property="og:image" content="{{ SITEURL }}/{{ page.metadata.image }}" />
+    {% elif SITELOGO %}
+      <meta property="og:image" content="{{ SITEURL }}/{{ SITELOGO }}" />
+    {% endif %}
+  {% elif article is defined and article %}
+    <meta property="og:title" content="{{ article.title }}" />
+    <meta property="og:description" content="{{ article.summary|striptags if article.summary else SITEDESCRIPTION }}" />
+    <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}" />
+    {% if article.metadata.cover %}
+      <meta property="og:image" content="{{ SITEURL }}/{{ article.metadata.cover }}" />
+    {% elif article.metadata.image %}
+      <meta property="og:image" content="{{ SITEURL }}/{{ article.metadata.image }}" />
+    {% elif SITELOGO %}
+      <meta property="og:image" content="{{ SITEURL }}/{{ SITELOGO }}" />
+    {% endif %}
+  {% else %}
+    <meta property="og:title" content="{{ SITENAME }}" />
+    <meta property="og:description" content="{{ SITEDESCRIPTION }}" />
+    <meta property="og:url" content="{{ SITEURL }}" />
+    {% if SITELOGO %}
+      <meta property="og:image" content="{{ SITEURL }}/{{ SITELOGO }}" />
+    {% endif %}
   {% endif %}
+
 {% endif %}
