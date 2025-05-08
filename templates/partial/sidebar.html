@@ -32,6 +32,10 @@
     {% if (pages and DISPLAY_PAGES_ON_MENU) or LINKS %}
     <nav>
       <ul class="list">
+        {% for title, link in MENUITEMS %}
+          <li><a href="{{ link }}">{{ _(title) }}</a></li>
+        {% endfor %}
+
         {# Open links in new window depending on the LINKS_IN_NEW_TAB setting #}
         {% macro get_target(link) -%}
           {%- if LINKS_IN_NEW_TAB in ('all', true) -%}

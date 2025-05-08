@@ -3,7 +3,7 @@
   <a href="{{ SITEURL }}/">{{ _('Home') }}</a>
 
   {% for title, link in MENUITEMS %}
-  <a href="{{ link }}">{{ _(title) }}</a>
+  <h1 href="{{ link }}">{{ _(title) }}</h1>
   {% endfor %}
 
   {% if FEED_ALL_ATOM %}
