@@ -25,6 +25,7 @@
       {{ translations.translations_for(article) }}
     {% endif %}
     <h1 id="{{ article.slug }}">{{ article.title }}</h1>
+    <p class="pub-date">Published on {{ article.date.strftime('%B %d, %Y') }}</p>
     <p>
       {% if PLUGINS and 'post_stats' in PLUGINS %}
         &#8226; {{ _('%(minutes)s min read', minutes=article.stats['read_mins']) }}
