@@ -138,7 +138,31 @@
     {% include "partial/og.html" %}
   {% endblock %}
 
-  <title>{{ SITENAME }}{% block title %}{% endblock %}</title>
+  <title>
+    {% if article and article.title %}
+      {{ article.title }} | {{ SITENAME }}
+    {% elif page and page.title %}
+      {{ page.title }} | {{ SITENAME }}
+    {% else %}
+      {{ SITENAME }}{% block title %}{% endblock %}
+    {% endif %}
+  </title>
+
+  {% if FAVICON %}
+    <link rel="icon" type="image/png" href="{{ SITEURL }}/{{ FAVICON }}" />
+  {% else %}
+    <link rel="icon" type="image/png" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/favicon.png" />
+  {% endif %}
+
+  {% if APPLE_TOUCH_ICON %}
+    <link rel="apple-touch-icon" href="{{ SITEURL }}/{{ APPLE_TOUCH_ICON }}" />
+  {% else %}
+    <link rel="apple-touch-icon" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/apple-touch-icon.png" />
+  {% endif %}
+
+  {% if APPLE_TOUCH_ICON_PRECOMPOSED %}
+    <link rel="apple-touch-icon-precomposed" href="{{ SITEURL }}/{{ APPLE_TOUCH_ICON_PRECOMPOSED }}" />
+  {% endif %}
   {% if SITESUBTITLE %}
       <p class="subtitle">{{ SITESUBTITLE }}</p>
   {% endif %}
